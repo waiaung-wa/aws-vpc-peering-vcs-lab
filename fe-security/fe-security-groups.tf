@@ -130,3 +130,13 @@ resource "aws_vpc_security_group_ingress_rule" "fe_private_sg03_allow_icmp_from_
   ip_protocol                  = "icmp"
   to_port                      = 0
 }
+
+
+# OPA test: SSH from the internet to a private SG (breaks Rule 3)
+resource "aws_vpc_security_group_ingress_rule" "opa_test_ssh_from_internet" {
+  security_group_id = aws_security_group.fe_private_sg01.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  to_port           = 22
+  ip_protocol       = "tcp"
+}

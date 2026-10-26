@@ -172,3 +172,16 @@ resource "aws_nat_gateway" "frontend_ngw" {
     environment = var.frontend_environment
   }
 }
+
+
+# OPA test: 7th subnet (breaks Rule 1)
+# and auto-assigns public IPs (breaks Rule 2)
+resource "aws_subnet" "opa_test_subnet07" {
+  vpc_id                  = aws_vpc.frontend_vpc.id
+  cidr_block              = "10.0.10.0/24"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "opa-test-subnet07"
+  }
+}
