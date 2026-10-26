@@ -194,10 +194,3 @@ aws secretsmanager delete-secret --region eu-west-1 --secret-id vpc-lab/frontend
 ```
 
 ---
-
-## 9. Limitations and next steps
-
-- **Port 22 open to `0.0.0.0/0` on public security groups** — needed because provisioners SSH from HCP Terraform runners. In production, use HCP Terraform agents or AWS SSM Session Manager and close it.
-- **Apply role has `AdministratorAccess`** — acceptable for a lab; production should use a scoped policy.
-- **Two NAT gateways and Elastic IPs are billed hourly** — destroy when not in use.
-- **Next step:** protect `main` with a GitHub ruleset that requires the HCP Terraform status checks, so a pull request that fails OPA cannot be merged.
