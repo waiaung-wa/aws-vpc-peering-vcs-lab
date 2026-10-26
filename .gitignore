@@ -1,0 +1,13 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+*.tfvars.json
+*.pem
+*.key
+*-ssh-key
+*-ssh-key.pub
+id_*
+*@*
+.DS_Store
